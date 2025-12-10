@@ -17,3 +17,23 @@ for (const line of data) {
 }
 
 console.log({total})
+
+let bigTotal = 0;
+for (const line of data) {
+    const values = line.split('').map(num => parseInt(num, 10));
+    let largestNumber = 0;
+    let largestNumberIndex = 0;
+    for (let i = 0; i < 12; i++) {
+        const largest = findLargestInRange(values, largestNumberIndex, values.length - (12 - i));
+        largestNumberIndex = values.indexOf(largest, largestNumberIndex) + 1;
+        largestNumber += largest * Math.pow(10, 11 - i);
+    }
+    bigTotal += largestNumber;
+}
+
+console.log({bigTotal});
+
+// find the largest number in the array given between the two indices
+function findLargestInRange(values: number[], start: number, end: number): number {
+    return Math.max(...values.slice(start, end + 1));
+}
