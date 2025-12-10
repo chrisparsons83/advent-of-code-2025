@@ -4,8 +4,6 @@ import * as path from "path";
 const dataPath = path.join(__dirname, "data/day4.txt");
 const data = fs.readFileSync(dataPath, "utf-8").split("\n").filter(line => line.trim() !== "").map(line => line.split(''));
 
-console.log(data);
-
 let movable = 0;
 for (let row = 0; row < data.length; row++) {
     for (let col = 0; col < data[row].length; col++) {
